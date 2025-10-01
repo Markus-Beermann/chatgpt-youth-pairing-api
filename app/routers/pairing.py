@@ -11,8 +11,9 @@ from app.logging import log
 
 router = APIRouter(prefix="/v1/pairing", tags=["pairing"])
 
+# generates 4 hex-like chars + dash + 3 digits, e.g., '9CBD-621'
 CODE_TTL_MIN = 10
-CODE_RE = re.compile(r"^[A-Z0-9]{3}-[A-Z0-9]{3}$")
+CODE_RE = re.compile(r"^[A-Z0-9]{4}-[A-Z0-9]{3}$")
 
 def _now() -> datetime:
     return datetime.now(timezone.utc)
