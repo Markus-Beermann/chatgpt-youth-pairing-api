@@ -6,7 +6,6 @@ from app.main import app
 
 client = TestClient(app)
 
-
 def test_revoke_pairing():
     """
     Parent creates a code, child claims it, parent revokes it.
