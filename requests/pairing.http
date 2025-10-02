@@ -1,0 +1,23 @@
+### Create code (Parent)
+POST http://127.0.0.1:8000/v1/pairing/create
+x-demo-role: parent
+x-demo-user: u_parent_1
+
+###
+
+### Claim code (Child) – Code from first response
+POST http://127.0.0.1:8000/v1/pairing/claim
+Content-Type: application/json
+x-demo-role: child
+x-demo-user: u_child_1
+
+{
+  "code": "XXXX-123"
+}
+
+###
+
+### List pairings (Child)
+GET http://127.0.0.1:8000/v1/pairing
+x-demo-role: child
+x-demo-user: u_child_1

@@ -1,0 +1,6 @@
+### POST http://127.0.0.1:8000/v1/pairing/create
+POST http://127.0.0.1:8000/v1/pairing/create
+Content-Type: application/json
+
+>> POST_http://127.0.0.1:8000/v1/pairing/create/response-{{$timestamp}}.json
+
