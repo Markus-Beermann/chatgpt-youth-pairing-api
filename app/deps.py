@@ -1,4 +1,12 @@
 from fastapi import Header, HTTPException
+from app.database import SessionLocal
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 # Demo auth: inject user via headers
 def require_role(expected_role: str):
