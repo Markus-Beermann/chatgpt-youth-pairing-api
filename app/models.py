@@ -14,3 +14,6 @@ class PairingOut(BaseModel):
     parent_id: str
     child_id: str
     status: str
+
+class RevokeOut(BaseModel):
+    ok: bool
