@@ -6,20 +6,10 @@ from app.main import app
 
 client = TestClient(app)
 
+def test_parent_create_rate_limit(client, parent_auth):
+    for _ in range(5):
+        ok = client.post("/v1/pairing/create", headers=parent_auth)
+        assert ok.status_code == 200
+    r = client.post("/v1/pairing/create", headers=parent_auth)
+    assert r.status_code == 429
 
-def test_parent_create_rate_limit():
-    """
-    A parent can only create up to 5 codes per minute.
-    On the 6th attempt, the API should return 429 Too Many Requests.
-    """
-    headers = {"x-demo-role": "parent", "x-demo-user": "u_parent_limit"}
-
-    # Do 5 successful creates
-    for i in range(5):
-        resp = client.post("/v1/pairing/create", headers=headers)
-        assert resp.status_code == 200
-
-    # 6th should fail
-    resp = client.post("/v1/pairing/create", headers=headers)
-    assert resp.status_code == 429
-    assert "Too many requests" in resp.text

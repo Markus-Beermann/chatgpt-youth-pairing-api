@@ -4,4 +4,10 @@ python-dotenv==1.0.1
 pydantic==2.9.2
 argon2-cffi==23.1.0
 redis==5.0.8
-PyJWT==2.9.0SQLAlchemy>=2.0
+SQLAlchemy>=2.0
+PyJWT>=2.9
+python-dotenv>=1.0
+argon2-cffi>=23
+fastapi>=0.115
+uvicorn[standard]>=0.30
+email-validator
